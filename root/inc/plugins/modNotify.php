@@ -53,7 +53,7 @@ function modNotify_info()
         'website' => 'http://lukasztkacz.com',
         'author' => 'Lukasz "LukasAMD" Tkacz',
         'authorsite' => 'http://lukasztkacz.com',
-        'version' => '1.6',
+        'version' => '1.7',
         'guid' => '8366943ead7ed8203af17742fb941e71',
         'compatibility' => '16*'
     );

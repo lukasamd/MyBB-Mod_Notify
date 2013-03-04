@@ -78,7 +78,7 @@ function task_modnotify($task)
             // Third loop - messages data
             for ($i = 0; $i <= $countMessages; $i++)
             {
-                $message .= str_replace('{USERNAME}', $moderator['link'], $messages[$i]['message']);
+                $message .= str_replace('{USERNAME}', htmlspecialchars_decode($moderator['link']), $messages[$i]['message']);
 
                 if ($i < $countMessages)
                 {

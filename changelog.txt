@@ -1,3 +1,8 @@
+Version 1.7
+    * Fix moderator URL in PM    
+
+
+
 Version 1.6
     * change license to LGPL v3
     * change plugin sign in hooks  
