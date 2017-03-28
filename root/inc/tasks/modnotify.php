@@ -16,25 +16,26 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- */ 
+ */
 
 function task_modnotify($task)
 {
-    global $db, $mybb, $lang, $plugins;
+    global $db, $lang;
 
     // Check table, class and settings
-    if (!$db->table_exists("mod_notify"))
-    {
+    if (!$db->table_exists("mod_notify")) {
         return;
     }
 
+    require_once MYBB_ROOT . '/inc/plugins/modNotify.php';
+
     // Initialize all Mod Notify data
-    $modNotify = new ModNotify();
-    $modNotify->init();
+    modNotify::init();
+    $quote = [];
+    $ids = [];
 
     $result = $db->simple_select('mod_notify', '*');
-    while ($row = $db->fetch_array($result))
-    {
+    while ($row = $db->fetch_array($result)) {
         $quote[$row['uid']][$row['mod_id']][] = array(
             'subject' => $row['subject'],
             'message' => $row['message'],
@@ -46,48 +47,40 @@ function task_modnotify($task)
 
 
     // Is there any pms to send? 
-    if (!sizeof($ids))
-    {
+    if (!sizeof($ids)) {
         add_task_log($task, $lang->modNotifyTaskLog);
         return;
     }
 
     // First loop - user data 
-    foreach ($quote as $uid => $data)
-    {
-        $user = $modNotify->getData($uid, 'user');
+    foreach ($quote as $uid => $data) {
+        $user = modNotify::getData($uid, 'user');
 
         // Second loop - moderator data
-        foreach ($data as $mod_id => $messages)
-        {
-            $moderator = $modNotify->getData($mod_id, 'user');
+        foreach ($data as $mod_id => $messages) {
+            $moderator = modNotify::getData($mod_id, 'user');
 
             $message = $user['username'] . ",\n";
             $countMessages = sizeof($messages);
             $countMessages--;
 
-            if ($countMessages > 0)
-            {
+            if ($countMessages > 0) {
                 $subject = $lang->modNotifyMultiSubject;
-            }
-            else
-            {
+            } else {
                 $subject = $messages[0]['subject'];
             }
 
             // Third loop - messages data
-            for ($i = 0; $i <= $countMessages; $i++)
-            {
+            for ($i = 0; $i <= $countMessages; $i++) {
                 $message .= str_replace('{USERNAME}', htmlspecialchars_decode($moderator['link']), $messages[$i]['message']);
 
-                if ($i < $countMessages)
-                {
+                if ($i < $countMessages) {
                     $message .= "\n\n[hr]\n\n\n";
                 }
             }
 
             // Add global signature
-            $message .= "\n" . $modNotify->getConfig('modNotifySignature');
+            $message .= "\n" . modNotify::getConfig('modNotifySignature');
             // Get "from" user id
             $from_id = $messages[0]['from_id'];
 
@@ -114,20 +107,13 @@ function task_modnotify($task)
             $pmhandler->set_data($pm);
 
             // Now let the pm handler do all the hard work.
-            if (!$pmhandler->validate_pm())
-            {
-                // Force it to valid to just get it out of here
-                $pm_errors = $pmhandler->get_friendly_errors();
-                $send_errors = inline_error($pm_errors);
-            }
-            else
-            {
+            if ($pmhandler->validate_pm()) {
                 $pminfo = $pmhandler->insert_pm();
-                update_pm_count($to);
+                update_pm_count($uid);
             }
         }
     }
-    $db->delete_query('mod_notify', 'id IN (' . implode(',', $ids) . ')');
 
+    $db->delete_query('mod_notify', 'id IN (' . implode(',', $ids) . ')');
     add_task_log($task, $lang->modNotifyTaskLog);
 }

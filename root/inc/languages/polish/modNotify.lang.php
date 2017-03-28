@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of Mod Notify plugin for MyBB.
- * Copyright (C) 2010-2013 Lukasz Tkacz <lukasamd@gmail.com>
+ * Copyright (C) Lukasz Tkacz <lukasamd@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- */ 
+ */
 
 $l['modNotifyTask'] = 'Powiadomienia moderatora';
 $l['modNotifyTaskDesc'] = 'Wysyłanie prywatnych wiadomości z informacjami o akcjach moderatorów';
