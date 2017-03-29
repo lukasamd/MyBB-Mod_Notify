@@ -125,8 +125,8 @@ class modNotify
         $plugins->add_hook("class_moderation_move_threads", ['modNotify', 'moveThreads']);
         $plugins->add_hook("class_moderation_merge_threads", ['modNotify', 'mergeThreads']);
         $plugins->add_hook("class_moderation_split_posts", ['modNotify', 'splitPosts']);
-        $plugins->add_hook("class_modnotify_moderation_approve_posts", ['modNotify', 'approvePosts']);
-        $plugins->add_hook("class_modnotify_moderation_unapprove_posts", ['modNotify', 'unapprovePosts']);
+        $plugins->add_hook("class_moderation_approve_posts", ['modNotify', 'approvePosts']);
+        $plugins->add_hook("class_moderation_unapprove_posts", ['modNotify', 'unapprovePosts']);
         $plugins->add_hook("pre_output_page", ['modNotify', 'pluginThanks']);
     }
 
@@ -141,7 +141,6 @@ class modNotify
         require_once MYBB_ROOT . '/inc/datahandlers/pm.php';
         require_once MYBB_ROOT . '/inc/functions_user.php';
         require_once MYBB_ROOT . '/inc/functions.php';
-        require_once MYBB_ROOT . '/inc/plugins/modNotify_Moderation.class.php';
 
         // Load all language data
         $lang->load('modNotify');
