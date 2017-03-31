@@ -56,6 +56,10 @@ function task_modnotify($task)
     foreach ($quote as $uid => $data) {
         $user = modNotify::getData($uid, 'user');
 
+        if (!$user['allownotices']) {
+            continue;
+        }
+
         // Second loop - moderator data
         foreach ($data as $mod_id => $messages) {
             $moderator = modNotify::getData($mod_id, 'user');
@@ -108,10 +112,11 @@ function task_modnotify($task)
 
             // Now let the pm handler do all the hard work.
             if ($pmhandler->validate_pm()) {
-                $pminfo = $pmhandler->insert_pm();
-                update_pm_count($uid);
+                $pmhandler->insert_pm();
             }
         }
+
+        update_pm_count($uid);
     }
 
     $db->delete_query('mod_notify', 'id IN (' . implode(',', $ids) . ')');

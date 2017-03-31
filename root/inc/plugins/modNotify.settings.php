@@ -255,7 +255,7 @@ class modNotifyInstaller
             subject text NOT NULL DEFAULT '',
             message text NOT NULL DEFAULT '',
             PRIMARY KEY (id)
-        )";
+        ) DEFAULT CHARSET=utf8;";
         $db->query($sql);
 
         rebuild_settings();
