@@ -73,6 +73,9 @@ $l['modNotifyMergeThreadsDesc'] = 'Specifies whether to send notification after 
 $l['modNotifySplitPosts'] = 'Notification after split thread';
 $l['modNotifySplitPostsDesc'] = 'Specifies whether to send notification after split thread by moderator.';
 
+$l['modNotifyReportRead'] = 'Notification after report read';
+$l['modNotifyReportReadDesc'] = 'Specifies whether to send notification after mark reports as read by moderator.';
+
 $l['modNotifySignature'] = 'Private message signature';
 $l['modNotifySignatureDesc'] = 'Text appended to the end of the notification';
 $l['modNotifySignatureDefault'] = "---\nRegards,\nBoard team";

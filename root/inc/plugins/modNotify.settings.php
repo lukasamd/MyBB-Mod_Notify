@@ -213,6 +213,15 @@ class modNotifyInstaller
                 'disporder' => $disporder++,
             ),
 
+            'modNotifyReportRead' => array(
+                'name' => 'modNotifyReportRead',
+                'title' => $db->escape_string($lang->modNotifyReportRead),
+                'description' => $db->escape_string($lang->modNotifyReportReadDesc),
+                'optionscode' => 'onoff',
+                'value' => '1',
+                'disporder' => $disporder++,
+            ),
+
             'modNotifySignature' => array(
                 'name' => 'modNotifySignature',
                 'title' => $db->escape_string($lang->modNotifySignature),

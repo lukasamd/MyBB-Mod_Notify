@@ -72,4 +72,7 @@ $l['modNotifyInfoMergeThreadsMessage'] = "Twój wątek [i]%1\$s[/i] został poł
 $l['modNotifyInfoSplitPosts'] = 'Twój post został wydzielony do nowego wątku';
 $l['modNotifyInfoSplitPostsMessage'] = "Twój post został wydzielony z wątku [i]%1\$s[/i] do wątku [i]%2\$s[/i] z działu %3\$s przez {USERNAME}. \n\n[b]Link do wątku:[/b]\n %4\$s\n";
 
+$l['modNotifyInfoReportRead'] = 'Twój raport został odczytany';
+$l['modNotifyInfoReportReadMessage'] = "Twój raport dotyczący postu [i]%1\$s[/i] napisanego przez [i]%2\$s[/i] został odczytany przez {USERNAME}. \n\n[b]Link do postu:[/b]\n %2\$s\n";
+
 $l['modNotifyMultiSubject'] = 'Twój post lub temat został zmodyfikowany przez moderatora';

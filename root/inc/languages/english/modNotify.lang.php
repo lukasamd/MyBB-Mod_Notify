@@ -72,4 +72,7 @@ $l['modNotifyInfoMergeThreadsMessage'] = "Your thread [i]%1\$s[/i] has been merg
 $l['modNotifyInfoSplitPosts'] = 'Your post has been splited to new thread';
 $l['modNotifyInfoSplitPostsMessage'] = "Your post has been splited from thread [i]%1\$s[/i] to thread [i]%2\$s[/i] in forum %3\$s by {USERNAME}. \n\n[b]Link to thread:[/b]\n %4\$s\n";
 
+$l['modNotifyInfoReportRead'] = 'Your report has been read';
+$l['modNotifyInfoReportReadMessage'] = "Your report about post [i]%1\$s[/i] written by [i]%2\$s[/i] has been read by {USERNAME}. \n\n[b]Link to post:[/b]\n %3\$s\n";
+
 $l['modNotifyMultiSubject'] = 'Your post or thread has been modified by a moderator';

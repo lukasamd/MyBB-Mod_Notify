@@ -127,6 +127,7 @@ class modNotify
         $plugins->add_hook("class_moderation_split_posts", ['modNotify', 'splitPosts']);
         $plugins->add_hook("class_moderation_approve_posts", ['modNotify', 'approvePosts']);
         $plugins->add_hook("class_moderation_unapprove_posts", ['modNotify', 'unapprovePosts']);
+        $plugins->add_hook("modcp_do_reports", ['modNotify', 'readReports']);
         $plugins->add_hook("pre_output_page", ['modNotify', 'pluginThanks']);
     }
 
@@ -136,7 +137,7 @@ class modNotify
      */
     public static function init()
     {
-        global $lang, $mybb, $moderation;
+        global $lang, $mybb;
 
         require_once MYBB_ROOT . '/inc/datahandlers/pm.php';
         require_once MYBB_ROOT . '/inc/functions_user.php';
@@ -149,9 +150,6 @@ class modNotify
 
         // Add user and DBAL data
         self::$user = $mybb->user;
-
-        // Overwrite Moderation class to get new hooks 
-        $moderation = new modNotify_Moderation();
     }
 
     
@@ -576,7 +574,6 @@ class modNotify
             // Build thread and forum links
             $link_thread = self::buildUrl('thread', $tid);
             $link_forum = self::buildUrl('forum', $forum['fid'], $forum['name']);
-            ;
 
             foreach ($pids as $pid) {
                 $post = self::getData($pid, 'post');
@@ -586,6 +583,38 @@ class modNotify
 
                     self::addToQuote($post['uid']);
                 }
+            }
+        }
+    }
+
+
+    /**
+     * Action for read reports by mod
+     *
+     * @param array $pids List with posts id to unapprove
+     */
+    public static function readReports()
+    {
+        if (!self::getConfig('modNotifyReportRead')) {
+            return;
+        }
+
+        global $mybb, $db;
+        self::init();
+
+        if (!empty($mybb->input['reports'])) {
+            $reportIds = array_map('intval', $mybb->input['reports']);
+            $reportIds = implode(',', $reportIds);
+
+            self::$subject = self::$lang->modNotifyInfoReportRead;
+
+            $result = $db->simple_select('reportedcontent', '*', "rid IN (" . $reportIds . ") AND type = 'post'");
+            while ($row = $db->fetch_array($result)) {
+                $postObj = self::getData($row['id'], 'post');
+                $link_post = self::buildUrl('post', $postObj['pid']);
+
+                self::$message = sprintf(self::$lang->modNotifyInfoReportReadMessage, $postObj['subject'], $postObj['username'], $link_post);
+                self::addToQuote($row['uid']);
             }
         }
     }

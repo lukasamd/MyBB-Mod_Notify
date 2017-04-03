@@ -73,6 +73,9 @@ $l['modNotifyMergeThreadsDesc'] = 'Określa czy ma zostać wysyłane powiadomien
 $l['modNotifySplitPosts'] = 'Powiadomienie po podzieleniu tematu';
 $l['modNotifySplitPostsDesc'] = 'Określa czy ma zostać wysyłane powiadomienie po podzieleniu tematu przez moderatora.';
 
+$l['modNotifyReportRead'] = 'Powiadomienie po przeczytaniu raportu';
+$l['modNotifyReportReadDesc'] = 'Określa czy ma zostać wysyłane powiadomienie gdy moderator oznaczy raport jako przeczytany.';
+
 $l['modNotifySignature'] = 'Dopisek do prywatnych wiadomości';
 $l['modNotifySignatureDesc'] = 'Tekst doklejany na koniec powiadomienia';
 $l['modNotifySignatureDefault'] = "---\nPozdrawiamy,\nEkipa forum";
