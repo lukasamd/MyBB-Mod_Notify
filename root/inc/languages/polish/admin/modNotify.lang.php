@@ -64,8 +64,8 @@ $l['modNotifyCopyThreadDesc'] = 'Określa czy ma zostać wysyłane powiadomienie
 $l['modNotifyMoveRedirect'] = 'Powiadomienie po przeniesieniu / przekierowaniu tematu';
 $l['modNotifyMoveRedirectDesc'] = 'Określa czy ma zostać wysyłane powiadomienie po przeniesieniu / przekierowaniu tematu przez moderatora.';
 
-$l['modNotifyMoveThreads'] = 'Powiadomienie po przenieseniu tematów';
-$l['modNotifyMoveThreadsDesc'] = 'Określa czy ma zostać wysyłane powiadomienie po przenieseniu tematów przez moderatora.';
+$l['modNotifyMoveThreads'] = 'Powiadomienie po przeniesieniu tematów';
+$l['modNotifyMoveThreadsDesc'] = 'Określa czy ma zostać wysyłane powiadomienie po przeniesieniu tematów przez moderatora.';
 
 $l['modNotifyMergeThreads'] = 'Powiadomienie po połączeniu tematów';
 $l['modNotifyMergeThreadsDesc'] = 'Określa czy ma zostać wysyłane powiadomienie po połączeniu tematów przez moderatora.';
