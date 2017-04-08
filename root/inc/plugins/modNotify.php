@@ -700,7 +700,7 @@ class modNotify
                     break;
 
                 case 'user':
-                    $result = $db->simple_select('users', 'uid, username', "uid = '{$id}'");
+                    $result = $db->simple_select('users', 'uid, username, allownotices', "uid = '{$id}'");
                     $data = $db->fetch_array($result);
 
                     if (isset($data['username'])) {
