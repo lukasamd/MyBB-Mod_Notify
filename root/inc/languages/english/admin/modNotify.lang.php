@@ -83,6 +83,9 @@ $l['modNotifySignatureDefault'] = "---\nRegards,\nBoard team";
 $l['modNotifyFromID'] = 'Private message sender ID';
 $l['modNotifyFromIDDesc'] = 'Specifies the user id number, which will be marked as private message sender.';
 
+$l['modNotifyIgnoredGroups'] = 'Ignored groups';
+$l['modNotifyIgnoredGroupsDesc'] = 'Users groups to ignore moderator notifications.';
+
 $l['modNotifyTask'] = 'Moderator notifications';
 $l['modNotifyTaskDesc'] = 'Task for "Moderator notifications" plugin';
 $l['modNotifyTaskLog'] = 'The "Moderator Notifications" plugin task successfully ran.';

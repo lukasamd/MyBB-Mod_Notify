@@ -54,7 +54,7 @@ function modNotify_info()
         'website' => 'https://tkacz.pro',
         'author' => 'Lukasz Tkacz',
         'authorsite' => 'https://tkacz.com',
-        'version' => '1.8.0',
+        'version' => '1.9.0',
         'codename' => 'moderator_notifications',
         'compatibility' => '18*'
     );
@@ -662,6 +662,17 @@ class modNotify
         }
 
         return $fromid;
+    }
+
+    /**
+     * Helper function to chek ignored groups
+     *
+     * @return bool
+     */
+    public static function isIgnored($user)
+    {
+        $isIgnored = is_member(self::getConfig('modNotifyIgnoredGroups'), $user);
+        return (!empty($isIgnored));
     }
 
 

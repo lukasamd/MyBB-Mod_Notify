@@ -230,6 +230,15 @@ class modNotifyInstaller
                 'value' => $db->escape_string($lang->modNotifySignatureDefault),
                 'disporder' => $disporder,
             ),
+
+            'modNotifySignature' => array(
+                'name' => 'modNotifyIgnoredGroups',
+                'title' => $db->escape_string($lang->modNotifyIgnoredGroups),
+                'description' => $db->escape_string($lang->modNotifyIgnoredGroupsDesc),
+                'optionscode' => 'groupselect',
+                'value' => '',
+                'disporder' => $disporder,
+            ),
         );
 
         foreach ($setting_array as $name => $setting) {

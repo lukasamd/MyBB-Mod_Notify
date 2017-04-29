@@ -60,6 +60,10 @@ function task_modnotify($task)
             continue;
         }
 
+        if (modNotify::isIgnored($user)) {
+            continue;
+        }
+
         // Second loop - moderator data
         foreach ($data as $mod_id => $messages) {
             $moderator = modNotify::getData($mod_id, 'user');

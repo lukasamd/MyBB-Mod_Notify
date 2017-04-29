@@ -83,6 +83,9 @@ $l['modNotifySignatureDefault'] = "---\nPozdrawiamy,\nEkipa forum";
 $l['modNotifyFromID'] = 'Numer ID nadawcy prywatnej wiadomości';
 $l['modNotifyFromIDDesc'] = 'Określa numer id użytkownika, który będzie oznaczony jako nadawca prywatnej wiadomości.';
 
+$l['modNotifyIgnoredGroups'] = 'Ignorowane grupy';
+$l['modNotifyIgnoredGroupsDesc'] = 'Grupy użytkowników, do których nie będą wysyłane prywatne wiadomości.';
+
 $l['modNotifyTask'] = 'Powiadomienia moderatora';
 $l['modNotifyTaskDesc'] = 'Wysyłanie prywatnych wiadomości z informacjami o akcjach moderatorów';
 $l['modNotifyTaskLog'] = 'Zadanie pluginu "Powiadomienia moderatora" zostało wykonane.';
